@@ -29,11 +29,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Sistema de Control de Inventarios - Inicio de sesión</string>
+   <string>Sistema de Registros - Inicio de sesión</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>icons/fa-logo.png</normaloff>icons/fa-logo.png</iconset>
+    <normaloff>icons/system-logo.png</normaloff>icons/system-logo.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(255, 255, 255);</string>

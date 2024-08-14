@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Sistema de Registro</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icons/system-logo.png</normaloff>icons/system-logo.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true">font-family:candara;
@@ -320,7 +324,7 @@ background-color:white;
                <widget class="QFrame" name="frame_11">
                 <property name="maximumSize">
                  <size>
-                  <width>1000</width>
+                  <width>1200</width>
                   <height>250</height>
                  </size>
                 </property>
@@ -381,6 +385,9 @@ border:none;</string>
                        <property name="text">
                         <string/>
                        </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
                       </widget>
                      </item>
                      <item>
@@ -428,7 +435,7 @@ QPushButton:hover{
                    </item>
                   </layout>
                  </item>
-                 <item row="0" column="1">
+                 <item row="0" column="1" colspan="2">
                   <layout class="QVBoxLayout" name="verticalLayout_63">
                    <item>
                     <widget class="QLabel" name="label_76">
@@ -478,6 +485,9 @@ border:none;</string>
                        <property name="text">
                         <string/>
                        </property>
+                       <property name="readOnly">
+                        <bool>true</bool>
+                       </property>
                       </widget>
                      </item>
                      <item>
@@ -525,7 +535,7 @@ QPushButton:hover{
                    </item>
                   </layout>
                  </item>
-                 <item row="0" column="2">
+                 <item row="0" column="3">
                   <layout class="QVBoxLayout" name="verticalLayout_64">
                    <item>
                     <widget class="QLabel" name="label_77">
@@ -562,13 +572,13 @@ QPushButton:hover{
 background-color:#D9D9D9;</string>
                      </property>
                      <property name="editable">
-                      <bool>true</bool>
+                      <bool>false</bool>
                      </property>
                     </widget>
                    </item>
                   </layout>
                  </item>
-                 <item row="0" column="3">
+                 <item row="0" column="4">
                   <layout class="QVBoxLayout" name="verticalLayout_30">
                    <item>
                     <widget class="QLabel" name="label_37">
@@ -715,7 +725,7 @@ border:none;</string>
                    </item>
                   </layout>
                  </item>
-                 <item row="1" column="2">
+                 <item row="1" column="3">
                   <layout class="QVBoxLayout" name="verticalLayout_33">
                    <item>
                     <widget class="QLabel" name="label_40">
@@ -764,6 +774,207 @@ border:none;</string>
                    </item>
                   </layout>
                  </item>
+                 <item row="2" column="2" colspan="3">
+                  <widget class="QFrame" name="frame_12">
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <widget class="QPushButton" name="btnRecordInsert">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>40</y>
+                      <width>110</width>
+                      <height>40</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>candara</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+background-color:#487A85;
+border:none;
+color: white;
+text-align: center;
+padding: 0px 15px;
+border-radius:10px;
+
+}
+QPushButton:hover{
+	background-color:#007DDA;
+	background-color: #56648F;
+	
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Insertar
+nuevo</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="btnRecordUpdate">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>40</y>
+                      <width>110</width>
+                      <height>40</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>candara</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+background-color:#4A4A4A;
+border:none;
+color: white;
+text-align: center;
+padding: 0px 15px;
+border-radius:10px;
+
+}
+QPushButton:hover{
+	background-color:#007DDA;
+	background-color: #56648F;
+	
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Actualizar
+seleccionado</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="btnRecordDelete">
+                    <property name="geometry">
+                     <rect>
+                      <x>270</x>
+                      <y>40</y>
+                      <width>110</width>
+                      <height>40</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>candara</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+background-color:#88435D;
+border:none;
+color: white;
+text-align: center;
+padding: 0px 15px;
+border-radius:10px;
+
+}
+QPushButton:hover{
+	background-color:#007DDA;
+	background-color: #56648F;
+	
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Eliminar
+seleccionado</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="btnRecordExport">
+                    <property name="geometry">
+                     <rect>
+                      <x>400</x>
+                      <y>40</y>
+                      <width>110</width>
+                      <height>40</height>
+                     </rect>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>110</width>
+                      <height>40</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>110</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>candara</family>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton{
+background-color:#B57E25;
+border:none;
+color: white;
+text-align: center;
+padding: 0px 15px;
+border-radius:10px;
+
+}
+QPushButton:hover{
+	background-color:#007DDA;
+	background-color: #56648F;
+	
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>Exportar</string>
+                    </property>
+                   </widget>
+                  </widget>
+                 </item>
                  <item row="2" column="0" colspan="2">
                   <layout class="QVBoxLayout" name="verticalLayout_32">
                    <item>
@@ -803,160 +1014,6 @@ border:none;</string>
                     </widget>
                    </item>
                   </layout>
-                 </item>
-                 <item row="2" column="2" colspan="2">
-                  <widget class="QFrame" name="frame_12">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <widget class="QPushButton" name="btnRecordInsert">
-                    <property name="geometry">
-                     <rect>
-                      <x>10</x>
-                      <y>40</y>
-                      <width>121</width>
-                      <height>40</height>
-                     </rect>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>200</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>candara</family>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-background-color:#487A85;
-border:none;
-color: white;
-text-align: center;
-padding: 0px 15px;
-border-radius:10px;
-
-}
-QPushButton:hover{
-	background-color:#007DDA;
-	background-color: #56648F;
-	
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Insertar
-nuevo</string>
-                    </property>
-                   </widget>
-                   <widget class="QPushButton" name="btnRecordUpdate">
-                    <property name="geometry">
-                     <rect>
-                      <x>140</x>
-                      <y>40</y>
-                      <width>121</width>
-                      <height>40</height>
-                     </rect>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>200</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>candara</family>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-background-color:#487A85;
-border:none;
-color: white;
-text-align: center;
-padding: 0px 15px;
-border-radius:10px;
-
-}
-QPushButton:hover{
-	background-color:#007DDA;
-	background-color: #56648F;
-	
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Actualizar
-seleccionado</string>
-                    </property>
-                   </widget>
-                   <widget class="QPushButton" name="btnRecordDelete">
-                    <property name="geometry">
-                     <rect>
-                      <x>280</x>
-                      <y>40</y>
-                      <width>121</width>
-                      <height>40</height>
-                     </rect>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>200</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>candara</family>
-                      <pointsize>10</pointsize>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton{
-background-color:#487A85;
-border:none;
-color: white;
-text-align: center;
-padding: 0px 15px;
-border-radius:10px;
-
-}
-QPushButton:hover{
-	background-color:#007DDA;
-	background-color: #56648F;
-	
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>Eliminar
-seleccionado</string>
-                    </property>
-                   </widget>
-                  </widget>
                  </item>
                 </layout>
                </widget>
@@ -1060,6 +1117,9 @@ border:none;</string>
                           <property name="text">
                            <string/>
                           </property>
+                          <property name="readOnly">
+                           <bool>true</bool>
+                          </property>
                          </widget>
                         </item>
                         <item>
@@ -1156,6 +1216,9 @@ border:none;</string>
                           </property>
                           <property name="text">
                            <string/>
+                          </property>
+                          <property name="readOnly">
+                           <bool>true</bool>
                           </property>
                          </widget>
                         </item>
@@ -1296,7 +1359,7 @@ border:none;</string>
                       </item>
                      </layout>
                     </item>
-                    <item row="1" column="0">
+                    <item row="1" column="0" colspan="2">
                      <widget class="QFrame" name="frame_18">
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
@@ -1304,7 +1367,7 @@ border:none;</string>
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <widget class="QPushButton" name="btnGetCurrentStock_8">
+                      <widget class="QPushButton" name="btnSearchRecords">
                        <property name="geometry">
                         <rect>
                          <x>0</x>
@@ -1349,6 +1412,53 @@ QPushButton:hover{
                        </property>
                        <property name="text">
                         <string>Buscar</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="btnClearSearchRecords">
+                       <property name="geometry">
+                        <rect>
+                         <x>130</x>
+                         <y>20</y>
+                         <width>121</width>
+                         <height>40</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>200</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>candara</family>
+                         <pointsize>10</pointsize>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+background-color:#B57E25;
+border:none;
+color: white;
+text-align: center;
+padding: 0px 15px;
+border-radius:10px;
+
+}
+QPushButton:hover{
+	background-color:#007DDA;
+	background-color: #56648F;
+	
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>Limpiar campos</string>
                        </property>
                       </widget>
                      </widget>

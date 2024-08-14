@@ -15,6 +15,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1074, 865)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icons/system-logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("font-family:candara;\n"
 "")
@@ -128,7 +131,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.frame_11 = QtWidgets.QFrame(self.tab1_2)
-        self.frame_11.setMaximumSize(QtCore.QSize(1000, 250))
+        self.frame_11.setMaximumSize(QtCore.QSize(1200, 250))
         self.frame_11.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_11.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_11.setObjectName("frame_11")
@@ -157,6 +160,7 @@ class Ui_MainWindow(object):
         self.txtRecordStartDate.setStyleSheet("background-color:#D9D9D9;\n"
 "border:none;")
         self.txtRecordStartDate.setText("")
+        self.txtRecordStartDate.setReadOnly(True)
         self.txtRecordStartDate.setObjectName("txtRecordStartDate")
         self.horizontalLayout_41.addWidget(self.txtRecordStartDate)
         self.btnGetRecordStartDate = QtWidgets.QPushButton(self.frame_11)
@@ -207,6 +211,7 @@ class Ui_MainWindow(object):
         self.txtRecordEndDate.setStyleSheet("background-color:#D9D9D9;\n"
 "border:none;")
         self.txtRecordEndDate.setText("")
+        self.txtRecordEndDate.setReadOnly(True)
         self.txtRecordEndDate.setObjectName("txtRecordEndDate")
         self.horizontalLayout_42.addWidget(self.txtRecordEndDate)
         self.btnGetRecordEndDate = QtWidgets.QPushButton(self.frame_11)
@@ -233,7 +238,7 @@ class Ui_MainWindow(object):
         self.btnGetRecordEndDate.setObjectName("btnGetRecordEndDate")
         self.horizontalLayout_42.addWidget(self.btnGetRecordEndDate)
         self.verticalLayout_63.addLayout(self.horizontalLayout_42)
-        self.gridLayout.addLayout(self.verticalLayout_63, 0, 1, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_63, 0, 1, 1, 2)
         self.verticalLayout_64 = QtWidgets.QVBoxLayout()
         self.verticalLayout_64.setObjectName("verticalLayout_64")
         self.label_77 = QtWidgets.QLabel(self.frame_11)
@@ -249,10 +254,10 @@ class Ui_MainWindow(object):
         self.cmbRecordType.setMinimumSize(QtCore.QSize(0, 30))
         self.cmbRecordType.setStyleSheet("border:none;\n"
 "background-color:#D9D9D9;")
-        self.cmbRecordType.setEditable(True)
+        self.cmbRecordType.setEditable(False)
         self.cmbRecordType.setObjectName("cmbRecordType")
         self.verticalLayout_64.addWidget(self.cmbRecordType)
-        self.gridLayout.addLayout(self.verticalLayout_64, 0, 2, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_64, 0, 3, 1, 1)
         self.verticalLayout_30 = QtWidgets.QVBoxLayout()
         self.verticalLayout_30.setObjectName("verticalLayout_30")
         self.label_37 = QtWidgets.QLabel(self.frame_11)
@@ -275,7 +280,7 @@ class Ui_MainWindow(object):
         self.txtRecordNumber.setText("")
         self.txtRecordNumber.setObjectName("txtRecordNumber")
         self.verticalLayout_30.addWidget(self.txtRecordNumber)
-        self.gridLayout.addLayout(self.verticalLayout_30, 0, 3, 1, 1)
+        self.gridLayout.addLayout(self.verticalLayout_30, 0, 4, 1, 1)
         self.verticalLayout_31 = QtWidgets.QVBoxLayout()
         self.verticalLayout_31.setObjectName("verticalLayout_31")
         self.label_38 = QtWidgets.QLabel(self.frame_11)
@@ -344,33 +349,15 @@ class Ui_MainWindow(object):
         self.txtRecordFolium.setText("")
         self.txtRecordFolium.setObjectName("txtRecordFolium")
         self.verticalLayout_33.addWidget(self.txtRecordFolium)
-        self.gridLayout.addLayout(self.verticalLayout_33, 1, 2, 1, 1)
-        self.verticalLayout_32 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_32.setObjectName("verticalLayout_32")
-        self.label_39 = QtWidgets.QLabel(self.frame_11)
-        self.label_39.setMaximumSize(QtCore.QSize(16777215, 30))
-        font = QtGui.QFont()
-        font.setFamily("candara")
-        font.setPointSize(10)
-        self.label_39.setFont(font)
-        self.label_39.setStyleSheet("color:#838383;")
-        self.label_39.setObjectName("label_39")
-        self.verticalLayout_32.addWidget(self.label_39)
-        self.txtRecordObservation = QtWidgets.QTextEdit(self.frame_11)
-        self.txtRecordObservation.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.txtRecordObservation.setStyleSheet("background-color:#D9D9D9;\n"
-"border:none;")
-        self.txtRecordObservation.setObjectName("txtRecordObservation")
-        self.verticalLayout_32.addWidget(self.txtRecordObservation)
-        self.gridLayout.addLayout(self.verticalLayout_32, 2, 0, 1, 2)
+        self.gridLayout.addLayout(self.verticalLayout_33, 1, 3, 1, 1)
         self.frame_12 = QtWidgets.QFrame(self.frame_11)
         self.frame_12.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_12.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_12.setObjectName("frame_12")
         self.btnRecordInsert = QtWidgets.QPushButton(self.frame_12)
-        self.btnRecordInsert.setGeometry(QtCore.QRect(10, 40, 121, 40))
-        self.btnRecordInsert.setMinimumSize(QtCore.QSize(0, 40))
-        self.btnRecordInsert.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.btnRecordInsert.setGeometry(QtCore.QRect(10, 40, 110, 40))
+        self.btnRecordInsert.setMinimumSize(QtCore.QSize(110, 40))
+        self.btnRecordInsert.setMaximumSize(QtCore.QSize(110, 16777215))
         font = QtGui.QFont()
         font.setFamily("candara")
         font.setPointSize(10)
@@ -391,15 +378,15 @@ class Ui_MainWindow(object):
 "}")
         self.btnRecordInsert.setObjectName("btnRecordInsert")
         self.btnRecordUpdate = QtWidgets.QPushButton(self.frame_12)
-        self.btnRecordUpdate.setGeometry(QtCore.QRect(140, 40, 121, 40))
-        self.btnRecordUpdate.setMinimumSize(QtCore.QSize(0, 40))
-        self.btnRecordUpdate.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.btnRecordUpdate.setGeometry(QtCore.QRect(140, 40, 110, 40))
+        self.btnRecordUpdate.setMinimumSize(QtCore.QSize(110, 40))
+        self.btnRecordUpdate.setMaximumSize(QtCore.QSize(110, 16777215))
         font = QtGui.QFont()
         font.setFamily("candara")
         font.setPointSize(10)
         self.btnRecordUpdate.setFont(font)
         self.btnRecordUpdate.setStyleSheet("QPushButton{\n"
-"background-color:#487A85;\n"
+"background-color:#4A4A4A;\n"
 "border:none;\n"
 "color: white;\n"
 "text-align: center;\n"
@@ -414,15 +401,15 @@ class Ui_MainWindow(object):
 "}")
         self.btnRecordUpdate.setObjectName("btnRecordUpdate")
         self.btnRecordDelete = QtWidgets.QPushButton(self.frame_12)
-        self.btnRecordDelete.setGeometry(QtCore.QRect(280, 40, 121, 40))
-        self.btnRecordDelete.setMinimumSize(QtCore.QSize(0, 40))
-        self.btnRecordDelete.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.btnRecordDelete.setGeometry(QtCore.QRect(270, 40, 110, 40))
+        self.btnRecordDelete.setMinimumSize(QtCore.QSize(110, 40))
+        self.btnRecordDelete.setMaximumSize(QtCore.QSize(110, 16777215))
         font = QtGui.QFont()
         font.setFamily("candara")
         font.setPointSize(10)
         self.btnRecordDelete.setFont(font)
         self.btnRecordDelete.setStyleSheet("QPushButton{\n"
-"background-color:#487A85;\n"
+"background-color:#88435D;\n"
 "border:none;\n"
 "color: white;\n"
 "text-align: center;\n"
@@ -436,7 +423,48 @@ class Ui_MainWindow(object):
 "    \n"
 "}")
         self.btnRecordDelete.setObjectName("btnRecordDelete")
-        self.gridLayout.addWidget(self.frame_12, 2, 2, 1, 2)
+        self.btnRecordExport = QtWidgets.QPushButton(self.frame_12)
+        self.btnRecordExport.setGeometry(QtCore.QRect(400, 40, 110, 40))
+        self.btnRecordExport.setMinimumSize(QtCore.QSize(110, 40))
+        self.btnRecordExport.setMaximumSize(QtCore.QSize(110, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("candara")
+        font.setPointSize(10)
+        self.btnRecordExport.setFont(font)
+        self.btnRecordExport.setStyleSheet("QPushButton{\n"
+"background-color:#B57E25;\n"
+"border:none;\n"
+"color: white;\n"
+"text-align: center;\n"
+"padding: 0px 15px;\n"
+"border-radius:10px;\n"
+"\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:#007DDA;\n"
+"    background-color: #56648F;\n"
+"    \n"
+"}")
+        self.btnRecordExport.setObjectName("btnRecordExport")
+        self.gridLayout.addWidget(self.frame_12, 2, 2, 1, 3)
+        self.verticalLayout_32 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_32.setObjectName("verticalLayout_32")
+        self.label_39 = QtWidgets.QLabel(self.frame_11)
+        self.label_39.setMaximumSize(QtCore.QSize(16777215, 30))
+        font = QtGui.QFont()
+        font.setFamily("candara")
+        font.setPointSize(10)
+        self.label_39.setFont(font)
+        self.label_39.setStyleSheet("color:#838383;")
+        self.label_39.setObjectName("label_39")
+        self.verticalLayout_32.addWidget(self.label_39)
+        self.txtRecordObservation = QtWidgets.QTextEdit(self.frame_11)
+        self.txtRecordObservation.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.txtRecordObservation.setStyleSheet("background-color:#D9D9D9;\n"
+"border:none;")
+        self.txtRecordObservation.setObjectName("txtRecordObservation")
+        self.verticalLayout_32.addWidget(self.txtRecordObservation)
+        self.gridLayout.addLayout(self.verticalLayout_32, 2, 0, 1, 2)
         self.horizontalLayout_3.addWidget(self.frame_11)
         self.tabWidget.addTab(self.tab1_2, "")
         self.tab_3 = QtWidgets.QWidget()
@@ -482,6 +510,7 @@ class Ui_MainWindow(object):
         self.txtSearchRecordStartDate.setStyleSheet("background-color:#D9D9D9;\n"
 "border:none;")
         self.txtSearchRecordStartDate.setText("")
+        self.txtSearchRecordStartDate.setReadOnly(True)
         self.txtSearchRecordStartDate.setObjectName("txtSearchRecordStartDate")
         self.horizontalLayout_43.addWidget(self.txtSearchRecordStartDate)
         self.btnGetSearchStartDate = QtWidgets.QPushButton(self.frame_14)
@@ -532,6 +561,7 @@ class Ui_MainWindow(object):
         self.txtSearchRecordEndDate.setStyleSheet("background-color:#D9D9D9;\n"
 "border:none;")
         self.txtSearchRecordEndDate.setText("")
+        self.txtSearchRecordEndDate.setReadOnly(True)
         self.txtSearchRecordEndDate.setObjectName("txtSearchRecordEndDate")
         self.horizontalLayout_44.addWidget(self.txtSearchRecordEndDate)
         self.btnGetSearchEndDate = QtWidgets.QPushButton(self.frame_14)
@@ -605,15 +635,15 @@ class Ui_MainWindow(object):
         self.frame_18.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_18.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_18.setObjectName("frame_18")
-        self.btnGetCurrentStock_8 = QtWidgets.QPushButton(self.frame_18)
-        self.btnGetCurrentStock_8.setGeometry(QtCore.QRect(0, 20, 121, 40))
-        self.btnGetCurrentStock_8.setMinimumSize(QtCore.QSize(0, 40))
-        self.btnGetCurrentStock_8.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.btnSearchRecords = QtWidgets.QPushButton(self.frame_18)
+        self.btnSearchRecords.setGeometry(QtCore.QRect(0, 20, 121, 40))
+        self.btnSearchRecords.setMinimumSize(QtCore.QSize(0, 40))
+        self.btnSearchRecords.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
         font.setFamily("candara")
         font.setPointSize(10)
-        self.btnGetCurrentStock_8.setFont(font)
-        self.btnGetCurrentStock_8.setStyleSheet("QPushButton{\n"
+        self.btnSearchRecords.setFont(font)
+        self.btnSearchRecords.setStyleSheet("QPushButton{\n"
 "background-color:#487A85;\n"
 "border:none;\n"
 "color: white;\n"
@@ -627,8 +657,31 @@ class Ui_MainWindow(object):
 "    background-color: #56648F;\n"
 "    \n"
 "}")
-        self.btnGetCurrentStock_8.setObjectName("btnGetCurrentStock_8")
-        self.gridLayout_2.addWidget(self.frame_18, 1, 0, 1, 1)
+        self.btnSearchRecords.setObjectName("btnSearchRecords")
+        self.btnClearSearchRecords = QtWidgets.QPushButton(self.frame_18)
+        self.btnClearSearchRecords.setGeometry(QtCore.QRect(130, 20, 121, 40))
+        self.btnClearSearchRecords.setMinimumSize(QtCore.QSize(0, 40))
+        self.btnClearSearchRecords.setMaximumSize(QtCore.QSize(200, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("candara")
+        font.setPointSize(10)
+        self.btnClearSearchRecords.setFont(font)
+        self.btnClearSearchRecords.setStyleSheet("QPushButton{\n"
+"background-color:#B57E25;\n"
+"border:none;\n"
+"color: white;\n"
+"text-align: center;\n"
+"padding: 0px 15px;\n"
+"border-radius:10px;\n"
+"\n"
+"}\n"
+"QPushButton:hover{\n"
+"    background-color:#007DDA;\n"
+"    background-color: #56648F;\n"
+"    \n"
+"}")
+        self.btnClearSearchRecords.setObjectName("btnClearSearchRecords")
+        self.gridLayout_2.addWidget(self.frame_18, 1, 0, 1, 2)
         self.horizontalLayout_5.addWidget(self.frame_14)
         self.horizontalLayout_4.addWidget(self.frame_13)
         self.tabWidget.addTab(self.tab_3, "")
@@ -663,13 +716,14 @@ class Ui_MainWindow(object):
         self.label_38.setText(_translate("MainWindow", "Título"))
         self.label_41.setText(_translate("MainWindow", "Destinatario"))
         self.label_40.setText(_translate("MainWindow", "Folio"))
-        self.label_39.setText(_translate("MainWindow", "Observación"))
         self.btnRecordInsert.setText(_translate("MainWindow", "Insertar\n"
 "nuevo"))
         self.btnRecordUpdate.setText(_translate("MainWindow", "Actualizar\n"
 "seleccionado"))
         self.btnRecordDelete.setText(_translate("MainWindow", "Eliminar\n"
 "seleccionado"))
+        self.btnRecordExport.setText(_translate("MainWindow", "Exportar"))
+        self.label_39.setText(_translate("MainWindow", "Observación"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab1_2), _translate("MainWindow", "Gestión de Registros"))
         self.label_78.setText(_translate("MainWindow", "Fecha Ingreso"))
         self.btnGetSearchStartDate.setText(_translate("MainWindow", "..."))
@@ -677,5 +731,6 @@ class Ui_MainWindow(object):
         self.btnGetSearchEndDate.setText(_translate("MainWindow", "..."))
         self.label_80.setText(_translate("MainWindow", "Tipo"))
         self.label_42.setText(_translate("MainWindow", "Número"))
-        self.btnGetCurrentStock_8.setText(_translate("MainWindow", "Buscar"))
+        self.btnSearchRecords.setText(_translate("MainWindow", "Buscar"))
+        self.btnClearSearchRecords.setText(_translate("MainWindow", "Limpiar campos"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "Búsqueda"))

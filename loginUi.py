@@ -23,7 +23,7 @@ class Ui_login(object):
         login.setMinimumSize(QtCore.QSize(600, 400))
         login.setMaximumSize(QtCore.QSize(600, 400))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/fa-logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icons/system-logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         login.setWindowIcon(icon)
         login.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.centralwidget = QtWidgets.QWidget(login)
@@ -201,7 +201,7 @@ class Ui_login(object):
 
     def retranslateUi(self, login):
         _translate = QtCore.QCoreApplication.translate
-        login.setWindowTitle(_translate("login", "Sistema de Control de Inventarios - Inicio de sesión"))
+        login.setWindowTitle(_translate("login", "Sistema de Registros - Inicio de sesión"))
         self.label_2.setText(_translate("login", "Sistema de Control de Registros"))
         self.label_3.setText(_translate("login", "Nombre de la empresa"))
         self.label_19.setText(_translate("login", "¡Bienvenido!"))
