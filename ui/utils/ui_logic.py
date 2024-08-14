@@ -15,6 +15,7 @@ class UtilsUILogic:
     def __init__(self, mainWindow: Ui_MainWindow, icon):
         self.mainWindow = mainWindow
         self.icon = icon
+        self.loginInfo = {"username": "", "userRole": 0, "success": False}
         self.connectionPool = self.getPool()
 
     def getPool(self):
@@ -50,8 +51,8 @@ class UtilsUILogic:
             formatted_date = selected_date.toString("dd/MM/yyyy")
             return formatted_date
 
-    def populateTableViewFromDataFrame(self, refTable: QTableView, refData: pd.DataFrame, stretchMode=True):
-        model = TableModel(refData)
+    def populateTableViewFromDataFrame(self, refTable: QTableView, refData: pd.DataFrame, stretchMode=True, checkbox_columns=None):
+        model = TableModel(refData, checkBox_columns=checkbox_columns)
         refTable.setModel(model)
         refTable.setStyleSheet(style_tableview)
         refTable.setShowGrid(False)
@@ -65,9 +66,19 @@ class UtilsUILogic:
     def resizeColumnsToContents(self, refTable: QTableView):
         header = refTable.horizontalHeader()
         header.setSectionResizeMode(QHeaderView.ResizeMode.ResizeToContents)
+        
+    def adjustCheckboxColumnTableColumnsWidths(self, refTable):
+        # Establecer un ancho fijo para la primera columna
+        refTable.setColumnWidth(0, 10)
+        # Las demás columnas se ajustan automáticamente al ancho disponible
+        header = refTable.horizontalHeader()
+        header.setSectionResizeMode(0, QHeaderView.Fixed)
+        for i in range(1, len(refTable.model().get_dataframe().columns)):
+            header.setSectionResizeMode(i, QHeaderView.Stretch)
 
     def executeSQL(self, strSQL, loadingPrompt="Consultando a la base de datos", params=None):
         self.results = []
+
         def sql(self, strSQL):
             try:
                 connection = getConnection()
@@ -88,7 +99,7 @@ class UtilsUILogic:
                     connection.close()
         self.loading_dialog = LoadingDialog(loadingPrompt)
         self.worker = Worker(sql, self, strSQL)
-        self.loading_dialog.start(self.worker)        
+        self.loading_dialog.start(self.worker)
         return self.results
 
     def executeSQLInsertOrUpdate(self, strSQL, params, loadingPrompt="Consultando a la base de datos"):
@@ -136,7 +147,7 @@ class UtilsUILogic:
             dateObj = datetime.strptime(strDate, "%d/%m/%Y")
             return {"str": dateObj.strftime("%Y-%m-%d"), "dateObj": dateObj}
         except:
-            return  {"str": "", "dateObj": None}
+            return {"str": "", "dateObj": None}
 
     def get_user_input(self, title, text, default_value=""):
         dialog = QInputDialog(self.mainWindow)

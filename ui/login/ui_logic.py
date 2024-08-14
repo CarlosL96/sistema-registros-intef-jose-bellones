@@ -14,22 +14,21 @@ class LoginUILogic:
         self.mainWindow.btnLogin.clicked.connect(self.check_credentials)
 
     def check_credentials(self):
-        try:
-            self.accepted = True
-            self.mainWindow.close()
-            return
+        try:                 
             username = self.mainWindow.txtLoginUser.text()
             password = self.mainWindow.txtLoginPassword.text()
             if "" in [username, password]:
                 return
-            strSQL = "SELECT username FROM sistema_usuarios WHERE username = %s AND password = SHA1(%s) LIMIT 1"
+            strSQL = "SELECT username, userRole FROM sistema_usuarios WHERE username = %s AND password = SHA1(%s) LIMIT 1"
             params = list((username, password))
             results = self.utils.executeSQL(
                 strSQL, "Validando credenciales", params)
             if len(results) == 0:
                 return self.utils.showMessageBox("Acceso denegado", "Las credenciales ingresadas no se encuentran registradas", QMessageBox.Critical, QMessageBox.Ok)
 
-            self.accepted = True
+            self.accepted = True           
+            self.username = results[0][0]
+            self.userRole = results[0][1]
             self.mainWindow.close()
         except Exception as e:
             traceback.print_exc()
@@ -39,6 +38,7 @@ class LoginUILogic:
 
     def login_successful(self):
         success = getattr(self, 'accepted', False)
-        username = self.mainWindow.txtLoginUser.text()
-
-        return {"success": success, "username": username}
+        username = getattr(self, 'username', "")
+        userRole = getattr(self, 'userRole', "")      
+      
+        return {"success": success, "username": username, "userRole": userRole}

@@ -1,7 +1,7 @@
 from PyQt5 import QtCore
 from PyQt5.QtGui import QBrush, QColor, QIcon, QCursor
 from PyQt5.QtCore import Qt, QRect, QEvent, pyqtSignal
-from PyQt5.QtWidgets import QStyledItemDelegate
+from PyQt5.QtWidgets import QStyledItemDelegate, QStyleOptionButton, QStyle, QApplication
 import pandas as pd
 import numpy as np
 
@@ -9,7 +9,7 @@ import numpy as np
 class TableModel(QtCore.QAbstractTableModel):
     checkboxToggled = pyqtSignal(int, int, bool)
 
-    def __init__(self, data, editable_columns=None, icon_columns=None, checkBox_columns = None):
+    def __init__(self, data, editable_columns=None, icon_columns=None, checkBox_columns=None):
         super(TableModel, self).__init__()
         self._data = data
         self.colors = dict()
@@ -69,7 +69,6 @@ class TableModel(QtCore.QAbstractTableModel):
         if index.column() in self._checkBox_columns:
             default_flags |= Qt.ItemIsUserCheckable
         return default_flags
-       
 
     def setData(self, index, value, role):
         if role == Qt.EditRole and index.column() in self._editable_columns:
@@ -84,7 +83,6 @@ class TableModel(QtCore.QAbstractTableModel):
             self.checkboxToggled.emit(index.row(), index.column(), is_checked)
             return True
         return False
-
 
     def clear(self):
         self.beginResetModel()
@@ -145,3 +143,51 @@ class IconDelegate(QStyledItemDelegate):
             self.updateCursor(index)
 
         return super().editorEvent(event, model, option, index)
+
+
+class SingleCheckboxDelegate(QStyledItemDelegate):
+    checkboxToggled = pyqtSignal(int, bool)
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self.checked_index = None
+
+    def paint(self, painter, option, index):
+        if index.column() == 0:
+            checked = index.data(Qt.CheckStateRole) == Qt.Checked
+            opt = QStyleOptionButton()
+            if checked:
+                opt.state = QStyle.State_On | QStyle.State_Enabled
+            else:
+                opt.state = QStyle.State_Off | QStyle.State_Enabled
+            opt.rect = self.get_checkbox_rect(option)
+            QApplication.style().drawControl(QStyle.CE_CheckBox, opt, painter)
+        else:
+            super().paint(painter, option, index)
+
+    def editorEvent(self, event, model, option, index):
+        if index.column() == 0 and event.type() in (QEvent.MouseButtonRelease, QEvent.MouseButtonDblClick):
+            if event.button() == Qt.LeftButton:
+                current_state = index.data(Qt.CheckStateRole)
+                if current_state == Qt.Checked:
+                    model.setData(index, Qt.Unchecked, Qt.CheckStateRole)
+                    self.checked_index = None
+                    # Emitir la señal con el número de fila y estado False
+                    self.checkboxToggled.emit(index.row(), False)
+                else:
+                    if self.checked_index is not None:
+                        model.setData(self.checked_index,
+                                      Qt.Unchecked, Qt.CheckStateRole)
+                    model.setData(index, Qt.Checked, Qt.CheckStateRole)
+                    self.checked_index = index
+                    # Emitir la señal con el número de fila y estado True
+                    self.checkboxToggled.emit(index.row(), True)
+                return True
+        return super().editorEvent(event, model, option, index)
+
+    def get_checkbox_rect(self, option):
+        checkbox_rect = QApplication.style().subElementRect(
+            QStyle.SE_CheckBoxIndicator, option)
+        return QRect(option.rect.x() + option.rect.width() // 2 - checkbox_rect.width() // 2,
+                     option.rect.y() + option.rect.height() // 2 - checkbox_rect.height() // 2,
+                     checkbox_rect.width(), checkbox_rect.height())

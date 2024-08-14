@@ -20,7 +20,7 @@ class MainApp(QMainWindow, Ui_MainWindow):
     def __init__(self, utils):
         super(MainApp, self).__init__()
         self.setupUi(self)
-        self.utils = utils
+        self.utils = utils        
         self.utils.updateUI(self)
         self.close_requested_by_ui = False
         self.icon = self.windowIcon()
@@ -45,7 +45,7 @@ def main():
     # Si el login fue exitoso, mostrar la ventana principal
     loginInfo = login_window.loginLogic.login_successful()
     if loginInfo["success"]:
-        login_window.utils.username = loginInfo["username"]
+        login_window.utils.loginInfo = loginInfo
         window = MainApp(login_window.utils)
         window.show()
         sys.exit(app.exec_())
