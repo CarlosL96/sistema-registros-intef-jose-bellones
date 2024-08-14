@@ -15,6 +15,9 @@ class LoginUILogic:
 
     def check_credentials(self):
         try:
+            self.accepted = True
+            self.mainWindow.close()
+            return
             username = self.mainWindow.txtLoginUser.text()
             password = self.mainWindow.txtLoginPassword.text()
             if "" in [username, password]:

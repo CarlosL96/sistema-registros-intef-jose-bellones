@@ -4,6 +4,7 @@ from ui.loginUi import Ui_login as LoginUI
 from ui.mainUi import Ui_MainWindow
 from ui.utils.ui_logic import UtilsUILogic
 from ui.login.ui_logic import LoginUILogic
+from ui.records.ui_logic import RecordsUILogic
 
 
 class LoginApp(QMainWindow, LoginUI):
@@ -19,12 +20,12 @@ class MainApp(QMainWindow, Ui_MainWindow):
     def __init__(self, utils):
         super(MainApp, self).__init__()
         self.setupUi(self)
-        self.utils = utils       
+        self.utils = utils
         self.utils.updateUI(self)
         self.close_requested_by_ui = False
         self.icon = self.windowIcon()
-      
-        
+        self.reportsLogic = RecordsUILogic(self, self.utils)
+
     def closeEvent(self, event):
         event.accept()
         return
@@ -43,11 +44,11 @@ def main():
     app.exec_()
     # Si el login fue exitoso, mostrar la ventana principal
     loginInfo = login_window.loginLogic.login_successful()
-    if loginInfo["success"]:        
+    if loginInfo["success"]:
         login_window.utils.username = loginInfo["username"]
         window = MainApp(login_window.utils)
         window.show()
-        sys.exit(app.exec_())    
+        sys.exit(app.exec_())
 
 
 if __name__ == '__main__':

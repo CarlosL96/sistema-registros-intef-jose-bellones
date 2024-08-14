@@ -100,7 +100,7 @@ class UtilsUILogic:
                 connection.commit()
             except Exception as e:
                 traceback.print_exc()
-                self.utils.howMessageBox(
+                self.utils.showMessageBox(
                     "Ha ocurrido un error", "Ocurrió un error inesperado durante el proceso, obtenga más información en los logs de la aplicación", QMessageBox.Critical, QMessageBox.Ok)
                 print("Error saving product records:", e)
             finally:
@@ -132,8 +132,11 @@ class UtilsUILogic:
         self.loading_dialog.start(self.worker)
 
     def getMysqlFormattedDate(self, strDate):
-        dateObj = datetime.strptime(strDate, "%d/%m/%Y")
-        return {"str": dateObj.strftime("%Y-%m-%d"), "dateObj": dateObj}
+        try:
+            dateObj = datetime.strptime(strDate, "%d/%m/%Y")
+            return {"str": dateObj.strftime("%Y-%m-%d"), "dateObj": dateObj}
+        except:
+            return  {"str": "", "dateObj": None}
 
     def get_user_input(self, title, text, default_value=""):
         dialog = QInputDialog(self.mainWindow)
