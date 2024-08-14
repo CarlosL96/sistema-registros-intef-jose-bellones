@@ -68,7 +68,6 @@ class UtilsUILogic:
 
     def executeSQL(self, strSQL, loadingPrompt="Consultando a la base de datos", params=None):
         self.results = []
-
         def sql(self, strSQL):
             try:
                 connection = getConnection()
@@ -78,11 +77,10 @@ class UtilsUILogic:
                 else:
                     cursor.execute(strSQL)
                 self.results = cursor.fetchall()
-
             except Exception as e:
                 traceback.print_exc()
-                self.showMessageBox(
-                    "Ha ocurrido un error", "Ocurrió un error inesperado durante la consulta de productos, obtenga más información en los logs de la aplicación", QMessageBox.Critical, QMessageBox.Ok)
+                self.utils.showMessageBox(
+                    "Ha ocurrido un error", "Ocurrió un error inesperado durante la consulta a la base de datos, obtenga más información en los logs de la aplicación", QMessageBox.Critical, QMessageBox.Ok)
                 print("Error saving product records:", e)
             finally:
                 if not cursor is None:
@@ -90,7 +88,7 @@ class UtilsUILogic:
                     connection.close()
         self.loading_dialog = LoadingDialog(loadingPrompt)
         self.worker = Worker(sql, self, strSQL)
-        self.loading_dialog.start(self.worker)
+        self.loading_dialog.start(self.worker)        
         return self.results
 
     def executeSQLInsertOrUpdate(self, strSQL, params, loadingPrompt="Consultando a la base de datos"):
@@ -102,7 +100,7 @@ class UtilsUILogic:
                 connection.commit()
             except Exception as e:
                 traceback.print_exc()
-                self.showMessageBox(
+                self.utils.howMessageBox(
                     "Ha ocurrido un error", "Ocurrió un error inesperado durante el proceso, obtenga más información en los logs de la aplicación", QMessageBox.Critical, QMessageBox.Ok)
                 print("Error saving product records:", e)
             finally:
@@ -122,7 +120,7 @@ class UtilsUILogic:
                 connection.commit()
             except Exception as e:
                 traceback.print_exc()
-                self.showMessageBox(
+                self.utils.showMessageBox(
                     "Ha ocurrido un error", "Ocurrió un error inesperado durante la consulta de productos, obtenga más información en los logs de la aplicación", QMessageBox.Critical, QMessageBox.Ok)
                 print("Error saving product records:", e)
             finally:

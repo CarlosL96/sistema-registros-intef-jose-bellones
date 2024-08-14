@@ -47,7 +47,7 @@ def main():
         login_window.utils.username = loginInfo["username"]
         window = MainApp(login_window.utils)
         window.show()
-        sys.exit(app.exec_())
+        sys.exit(app.exec_())    
 
 
 if __name__ == '__main__':

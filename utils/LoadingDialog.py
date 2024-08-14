@@ -40,7 +40,6 @@ class LoadingDialog(QtWidgets.QDialog):
 class Worker(QtCore.QThread):
     finished = QtCore.pyqtSignal()
     error = QtCore.pyqtSignal(str)  # Señal de error que lleva un mensaje de error
-
     def __init__(self, func, *args, **kwargs):
         super().__init__()
         self.func = func
